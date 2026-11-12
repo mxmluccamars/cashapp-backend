@@ -129,7 +129,7 @@ class TransactionService:
         # 3. Caso de compra à vista (1x)
         single_data = schema.model_dump(exclude={"installments"})
         single_data["id"] = str(uuid.uuid4())
-        created_obj = self.repository.create(db, obj_in=single_data)
+        created_obj = self.repository.create(db, obj_in_data=single_data)
         return [created_obj]
 
     def get_by_id(self, db: Session, transaction_id: str) -> Transaction:

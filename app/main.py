@@ -40,11 +40,16 @@ app = FastAPI(
 )
 
 # Configuração de CORS
+# Lê uma URL extra do ambiente (ex: https://meu-cashapp.vercel.app) se existir
+FRONTEND_URL = os.getenv("FRONTEND_URL", "")
+
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
 
+if FRONTEND_URL:
+    origins.append(FRONTEND_URL)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

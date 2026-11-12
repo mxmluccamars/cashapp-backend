@@ -3,24 +3,26 @@ from sqlalchemy.orm import sessionmaker
 from typing import Generator
 from app.core.config import settings
 
-# Ajuste específico apenas caso estejamos usando SQLite
-is_sqlite = settings.DATABASE_URL.startswith("sqlite")
+# 1. Garante compatibilidade caso a URL comece com 'postgres://' em vez de 'postgresql://'
+db_url = settings.DATABASE_URL
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
+
+# 2. Ajuste específico apenas caso estejamos usando SQLite
+is_sqlite = db_url.startswith("sqlite")
 connect_args = {"check_same_thread": False} if is_sqlite else {}
 
+# 3. Cria o motor com pool_pre_ping=True (essencial para bancos serverless como o Neon!)
 engine = create_engine(
-    settings.DATABASE_URL,
+    db_url,
     connect_args=connect_args,
-    echo=True  # Se quiser ver todas as queries SQL no terminal para aprender, descomente aqui!
+    pool_pre_ping=True
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
 def get_db() -> Generator:
-    """
-    Injetor de dependência do FastAPI.
-    Abre uma sessão com o banco e garante que ela seja fechada ao final da requisição.
-    """
     db = SessionLocal()
     try:
         yield db
