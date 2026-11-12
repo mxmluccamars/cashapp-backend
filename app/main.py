@@ -46,6 +46,7 @@ FRONTEND_URL = os.getenv("FRONTEND_URL", "")
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://cashapp-finance.vercel.app",
 ]
 
 if FRONTEND_URL:
