@@ -41,7 +41,7 @@ def verify_token(
     try:
         payload = jwt.decode(
             credentials.credentials,
-            settings.JWT_SECRET,
+            settings.JWT_SECRET, 
             algorithms=[ALGORITHM],
         )
         subject = payload.get("sub")
