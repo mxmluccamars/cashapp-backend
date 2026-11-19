@@ -32,7 +32,7 @@ class Category(Base):
     # dados
     name = Column(String(50), nullable=False, unique=True, index=True, doc="Nome da categoria.")
     type = Column(String(10), nullable=False, doc="Tipo de categoria (INCOME ou EXPENSE).")
-    icon = Column(String(30), nullable=True, default="tag", doc="Ícone da categoria.")
+    icon = Column(String(30), nullable=True, default="Tag", doc="Ícone da categoria.")
     color = Column(String(7), nullable=False, default="#10B981", doc="Cor da categoria.")
     monthly_limit = Column(Numeric(12, 2), nullable=True, doc="Limite mensal da categoria.")
 

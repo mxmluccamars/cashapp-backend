@@ -54,13 +54,13 @@ def seed_contexts(db: Session):
 
 def seed_categories(db: Session):
     categories = [
-        {"name": "Alimentação", "type": "EXPENSE", "icon": "utensils", "color": "#EF4444", "monthly_limit": Decimal("800.00")},
-        {"name": "Transporte", "type": "EXPENSE", "icon": "car", "color": "#F59E0B", "monthly_limit": Decimal("400.00")},
-        {"name": "Moradia", "type": "EXPENSE", "icon": "home", "color": "#3B82F6", "monthly_limit": Decimal("1200.00")},
-        {"name": "Lazer", "type": "EXPENSE", "icon": "film", "color": "#EC4899", "monthly_limit": Decimal("300.00")},
-        {"name": "Saúde", "type": "EXPENSE", "icon": "heart-pulse", "color": "#10B981", "monthly_limit": None},
-        {"name": "Salário", "type": "INCOME", "icon": "wallet", "color": "#10B981", "monthly_limit": None},
-        {"name": "Rendimentos / Freelance", "type": "INCOME", "icon": "trending-up", "color": "#6366F1", "monthly_limit": None},
+        {"name": "Alimentação", "type": "EXPENSE", "icon": "Utensils", "color": "#EF4444", "monthly_limit": Decimal("800.00")},
+        {"name": "Transporte", "type": "EXPENSE", "icon": "Car", "color": "#F59E0B", "monthly_limit": Decimal("400.00")},
+        {"name": "Moradia", "type": "EXPENSE", "icon": "Home", "color": "#3B82F6", "monthly_limit": Decimal("1200.00")},
+        {"name": "Lazer", "type": "EXPENSE", "icon": "Film", "color": "#EC4899", "monthly_limit": Decimal("300.00")},
+        {"name": "Saúde", "type": "EXPENSE", "icon": "HeartPulse", "color": "#10B981", "monthly_limit": None},
+        {"name": "Salário", "type": "INCOME", "icon": "Wallet", "color": "#10B981", "monthly_limit": None},
+        {"name": "Rendimentos / Freelance", "type": "INCOME", "icon": "TrendingUp", "color": "#6366F1", "monthly_limit": None},
     ]
     created = {}
     for data in categories:
