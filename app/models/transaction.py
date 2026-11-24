@@ -55,8 +55,8 @@ class Transaction(Base):
     payment_method_id = Column(String(36), ForeignKey("payment_methods.id", ondelete="RESTRICT"), nullable=False, doc="Forma de pagamento da transação.")
     payment_method = relationship("PaymentMethod", lazy="joined")
 
-    location_id = Column(String(36), ForeignKey("locations.id", ondelete="SET NULL"), nullable=True, doc="Local da transação.")
-    location = relationship("Location", lazy="joined")
+    # location_id = Column(String(36), ForeignKey("locations.id", ondelete="SET NULL"), nullable=True, doc="Local da transação.")
+    # location = relationship("Location", lazy="joined")
 
     goal_id = Column(String(36), ForeignKey("goals.id", ondelete="SET NULL"), nullable=True, doc="Meta da transação.")
     goal = relationship("Goal", lazy="joined")

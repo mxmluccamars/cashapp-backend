@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.schemas.category import CategoryResponse
 from app.schemas.context import ContextResponse
 from app.schemas.goal import GoalResponse
-from app.schemas.location import LocationResponse
+# from app.schemas.location import LocationResponse
 from app.schemas.payment_method import PaymentMethodResponse
 from app.schemas.recurring_bill import RecurringBillResponse
 
@@ -28,7 +28,7 @@ class TransactionBase(BaseModel):
     category_id: str
     context_id: Optional[str] = None
     payment_method_id: str
-    location_id: Optional[str] = None
+    # location_id: Optional[str] = None
     goal_id: Optional[str] = None
     recurring_bill_id: Optional[str] = None
     # installment_current: Optional[int] = None
@@ -55,7 +55,7 @@ class TransactionUpdate(BaseModel):
     category_id: Optional[str] = None
     context_id: Optional[str] = None
     payment_method_id: Optional[str] = None
-    location_id: Optional[str] = None
+    # location_id: Optional[str] = None
     goal_id: Optional[str] = None
     recurring_bill_id: Optional[str] = None
     installment_current: Optional[int] = None
@@ -70,7 +70,7 @@ class TransactionResponse(TransactionBase):
     category: Optional[CategoryResponse] = None
     context: Optional[ContextResponse] = None
     payment_method: Optional[PaymentMethodResponse] = None
-    location: Optional[LocationResponse] = None
+    # location: Optional[LocationResponse] = None
     goal: Optional[GoalResponse] = None
     recurring_bill: Optional[RecurringBillResponse] = None
 

@@ -15,7 +15,7 @@ from app.repositories.transaction import TransactionRepository, transaction_repo
 from app.repositories.category import category_repository
 from app.repositories.payment_method import payment_method_repository
 from app.repositories.context import context_repository
-from app.repositories.location import location_repository
+# from app.repositories.location import location_repository
 from app.repositories.goal import goal_repository
 from app.repositories.recurring_bill import recurring_bill_repository
 
@@ -30,7 +30,7 @@ class TransactionService:
         category_id: Optional[str] = None,
         payment_method_id: Optional[str] = None,
         context_id: Optional[str] = None,
-        location_id: Optional[str] = None,
+        # location_id: Optional[str] = None,
         goal_id: Optional[str] = None,
         recurring_bill_id: Optional[str] = None,
     ) -> None:
@@ -53,11 +53,11 @@ class TransactionService:
                 detail=f"Contexto com ID '{context_id}' não encontrado."
             )
 
-        if location_id and not location_repository.get_by_id(db, id=location_id):
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Local com ID '{location_id}' não encontrado."
-            )
+        # if location_id and not location_repository.get_by_id(db, id=location_id):
+        #     raise HTTPException(
+        #         status_code=status.HTTP_404_NOT_FOUND,
+        #         detail=f"Local com ID '{location_id}' não encontrado."
+        #     )
 
         if goal_id and not goal_repository.get_by_id(db, id=goal_id):
             raise HTTPException(
@@ -82,7 +82,7 @@ class TransactionService:
             category_id=schema.category_id,
             payment_method_id=schema.payment_method_id,
             context_id=schema.context_id,
-            location_id=schema.location_id,
+            # location_id=schema.location_id,
             goal_id=schema.goal_id,
             recurring_bill_id=schema.recurring_bill_id,
         )
@@ -154,7 +154,7 @@ class TransactionService:
             category_id=update_data.get("category_id"),
             payment_method_id=update_data.get("payment_method_id"),
             context_id=update_data.get("context_id"),
-            location_id=update_data.get("location_id"),
+            # location_id=update_data.get("location_id"),
             goal_id=update_data.get("goal_id"),
             recurring_bill_id=update_data.get("recurring_bill_id"),
         )
