@@ -38,7 +38,7 @@ def create_transaction(
 )
 def list_transactions(
     skip: int = Query(0, ge=0, description="Registros para pular (paginação)"),
-    limit: int = Query(100, ge=1, le=500, description="Limite máximo de registros"),
+    limit: int = Query(None, ge=1, le=500, description="Limite máximo de registros"),
     db: Session = Depends(get_db)
 ):
     """

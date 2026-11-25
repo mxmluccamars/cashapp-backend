@@ -141,7 +141,7 @@ class TransactionService:
             )
         return transaction
 
-    def list_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Transaction]:
+    def list_all(self, db: Session, skip: int = 0, limit: int | None = None) -> List[Transaction]:
         return self.repository.get_all(db, skip=skip, limit=limit)
 
     def update(self, db: Session, transaction_id: str, schema: TransactionUpdate) -> Transaction:
