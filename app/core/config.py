@@ -14,6 +14,15 @@ class Settings(BaseSettings):
     JWT_SECRET: str = "troque-esta-chave-no-env-por-uma-bem-longa"
     ACCESS_TOKEN_EXPIRE_DAYS: int = 7
 
+    NEON_API_KEY: str = ""
+    NEON_PROJECT_ID: str = ""
+    NEON_STORAGE_LIMIT_MB: float = 512.0
+    NEON_COMPUTE_LIMIT_HOURS: float = 100.0
+
+    RENDER_API_KEY: str = ""
+    RENDER_SERVICE_ID: str = ""
+    RENDER_MEMORY_LIMIT_MB: float = 512.0
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
