@@ -6,7 +6,7 @@ Separa claramente o que é exigido no cadastro (POST), na atualização parcial 
 e o que é formatado e devolvido para a internet (GET).
 """
 
-from datetime import date, datetime
+from datetime import date as DateType, datetime
 from decimal import Decimal
 from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field
@@ -22,7 +22,7 @@ from app.schemas.recurring_bill import RecurringBillResponse
 class TransactionBase(BaseModel):
     description: str = Field(..., min_length=2, max_length=100, description="Descrição da transação")
     amount: Decimal = Field(..., gt=0, description="Valor da transação")
-    date: date 
+    date: DateType
     type: str = Field(..., pattern="^(EXPENSE|INCOME)$", description="EXPENSE ou INCOME")
     notes: Optional[str] = None
     category_id: str
@@ -49,7 +49,7 @@ class TransactionCreate(TransactionBase):
 class TransactionUpdate(BaseModel):
     description: Optional[str] = None
     amount: Optional[Decimal] = Field(default=None, gt=0)
-    date: Optional[date] = None
+    date: Optional[DateType] = None
     type: Optional[str] = Field(default=None, pattern="^(EXPENSE|INCOME)$")
     notes: Optional[str] = None
     category_id: Optional[str] = None
